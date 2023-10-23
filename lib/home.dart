@@ -254,55 +254,6 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (context, index) {
         return (taskList[index]['status'] == false)
             ? GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return SizedBox(
-                        width: 200,
-                        height: 100,
-                        child: Form(
-                          key: formkey,
-                          child: AlertDialog(
-                            title: const Text('edit field'),
-                            content: TextFormField(
-                              onChanged: (value) {},
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'filed is required';
-                                }
-                                return null;
-                              },
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'name',
-                                fillColor: Colors.white,
-                                filled: true,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                              ),
-                            ),
-                            actions: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  postTaskApi();
-                                  if (formkey.currentState!.validate()) {
-                                    debugPrint(taskList as String?);
-                                    Navigator.pop(context);
-                                  }
-                                },
-                                child: const Text(
-                                  'edit',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   color: Colors.grey,
@@ -329,59 +280,6 @@ class _HomePageState extends State<HomePage> {
       itemBuilder: (context, index) {
         return (taskList[index]['status'] == true)
             ? GestureDetector(
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return SizedBox(
-                        width: 200,
-                        height: 100,
-                        child: Form(
-                          key: formkey,
-                          child: AlertDialog(
-                            title: const Text('edit field'),
-                            content: TextFormField(
-                              controller: update,
-                              onChanged: (value) {},
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'filed is required';
-                                }
-                                return null;
-                              },
-                              decoration: const InputDecoration(
-                                border: OutlineInputBorder(),
-                                hintText: 'name',
-                                fillColor: Colors.white,
-                                filled: true,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(color: Colors.black),
-                                ),
-                              ),
-                            ),
-                            actions: [
-                              ElevatedButton(
-                                onPressed: () {
-                                  if (formkey.currentState!.validate()) {
-                                    taskList[index] = {
-                                      "name": update.text,
-                                      "status": true
-                                    };
-                                    debugPrint(taskList as String?);
-                                    setState(() {});
-                                  }
-                                },
-                                child: const Text(
-                                  'edit uu uu',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
                 child: Container(
                   margin: const EdgeInsets.all(10),
                   color: Colors.greenAccent,
